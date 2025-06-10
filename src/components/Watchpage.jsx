@@ -2,6 +2,9 @@ import React, { useEffect,useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { closemenu } from '../utils/Appslice';
 import { useSearchParams } from 'react-router-dom';
+import Commentscontainer from './Commentscontainer';
+import Democomments from '../utils/Democomments';
+import Livechat from './Livechat';
 
 const Watchpage = () => {
    const [searchParams] = useSearchParams();
@@ -30,8 +33,9 @@ const Watchpage = () => {
 
 
   return (
-    <div className="px-4 py-6">
-      <div className="flex flex-col">
+     <div className="flex flex-col  ">
+    <div className="px-4 py-6 flex ">
+        <div >
         <iframe
           width="1000"
           height="550"
@@ -41,6 +45,11 @@ const Watchpage = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
+        </div>
+        <div className='w-full'>
+          <Livechat/>
+        </div>
+         </div>
         {/* Video Title */}
         <h1 className="text-2xl font-bold mt-4">{info.snippet.title}</h1>
        
@@ -54,14 +63,11 @@ const Watchpage = () => {
           <button className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">
             Subscribe
           </button>
-        </div>
+       
 
-        {/* Description */}
-        <div className="mt-4">
-          <p className="text-sm text-gray-700">{info.snippet.description}</p>
-        </div>
 
       </div>
+      <Commentscontainer comments={Democomments}/>
     </div>
   )
 }

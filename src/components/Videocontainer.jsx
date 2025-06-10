@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { YOUTUBE_VIDEO_API } from '../utils/constants';
-import Videocard from './Videocard';
+import Videocard, { AdVideoCard } from './Videocard';
 import { Link } from 'react-router-dom';
 
 
@@ -19,6 +19,7 @@ const getvideos = async ()=>{
 
   return (
     <div className="flex cursor-pointer flex-wrap">
+      {videos[0] && <AdVideoCard info={videos[0]}/>}
       {videos.map((video)=>(
         <Link key={video.id} to={"/watch?v=" + video.id}>
            <Videocard  info={video} />
@@ -29,8 +30,6 @@ const getvideos = async ()=>{
   )
 }
 
-const fn = (videocard)=>{
-  return <videocard/>
-}
+
 
 export default Videocontainer
