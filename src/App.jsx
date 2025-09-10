@@ -10,7 +10,7 @@ const appRouter = createBrowserRouter([{
   path:"/",
   element:<Body/>,
   children: [
-    {
+    {  
       path:"/",
       element:<Maincontainer/>
     },
